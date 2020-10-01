@@ -1,24 +1,19 @@
 let testArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 15, 16, 19, 24, 26, 27, 29]
 
-let binarySearch = function(testArray, start, end, key) {
-    if(start > end) {
-        return - 1};
+const binarySearch = function(arr, start, end, key) {
+    let mid = Math.floor(start + (end - start) / 2);
 
-    let mid = Math.floor((start + end) / 2);
-
-    if(testArray[mid] === key) { 
-        return mid};
-    if(key > testArray[mid]) {
-        return binarySearch(testArray, mid + 1, end, key);
-    } else if(key < testArray[mid]) {
-        return binarySearch(testArray, start, mid - 1, key);
+    if (key === arr[mid]) {
+        return mid
+    } else if (key < arr[mid]) {
+        return binarySearch (arr, start, (mid - 1), key)
+    } else if (key > arr[mid]) {
+        return binarySearch(arr, (mid + 1), end, key)
     }
 };
 
 
-console.log(binarySearch(testArray, 19));
-console.log(binarySearch(testArray, 12));
-console.log(binarySearch(testArray, 26));
+console.log(binarySearch(testArray, 0, (testArray.length - 1), 12));
 
 // ------------------------------------------------------------------------------
 
@@ -32,6 +27,22 @@ console.log(binarySearch(testArray, 26));
 // 	else if (testArray[middle] === target) return middle;
 // 	else if (testArray[middle] < target) return binarySearch(testArray, target, middle + 1, max);
 // 	else return binarySearch(testArray, target, min, middle - 1);
+// };
+
+// ------------------------------------------------------------------------------
+
+//     if(start > end) {
+//         return - 1};
+
+//     let mid = Math.floor((start - end) / 2);
+
+//     if(testArray[mid] === key) { 
+//         return mid};
+//     if(key > testArray[mid]) {
+//         return binarySearch(testArray, mid + 1, end, key);
+//     } else if(key < testArray[mid]) {
+//         return binarySearch(testArray, start, mid - 1, key);
+//     }
 // };
 
 // ------------------------------------------------------------------------------
